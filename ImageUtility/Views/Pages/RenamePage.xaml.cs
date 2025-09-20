@@ -27,5 +27,10 @@ namespace ImageUtility.Views.Pages
             ViewModel = vm;
             InitializeComponent();
         }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

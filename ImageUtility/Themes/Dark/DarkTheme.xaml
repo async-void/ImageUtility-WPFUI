@@ -9,10 +9,10 @@
     <Color x:Key="LightGray">#E1E1E1</Color>
     <Color x:Key="PrimaryBlue">#2A82DA</Color>
     <Color x:Key="LightBlue">#3B99FF</Color>
-    <Color x:Key="PrimaryRed">#FF0000</Color>
-    <Color x:Key="LightRed">#FC2F2F</Color>
-    <Color x:Key="PrimaryGreen">#3c8e34</Color>
-    <Color x:Key="LightGreen">#4fb743</Color>
+    <Color x:Key="PrimaryRed">#d31e02</Color>
+    <Color x:Key="LightRed">#d14732</Color>
+    <Color x:Key="PrimaryGreen">#0a9e03</Color>
+    <Color x:Key="LightGreen">#61ba5d</Color>
 
     <!-- BRUSHES -->
     

@@ -180,19 +180,57 @@
                             
                         </ui:CardExpander>
                         <!--#endregion-->
-                        
+
+                      <!-- #region USE EXTERNAL TXT FILE -->
+                        <ui:CardExpander HorizontalContentAlignment="Left" 
+                                         Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                         Padding="8">
+                            <ui:CardExpander.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="308" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Use External Txt File"
+                                               FontSize="16"
+                                               FontStyle="Oblique"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource BlueGradientBrush}"
+                                               Margin="6 0"/>
+                                    <ui:Button Grid.Column="2" 
+                                               VerticalContentAlignment="Center"
+                                               Cursor="Hand"
+                                               Icon="{ui:SymbolIcon Symbol=DocumentText24, Filled=True, FontSize=18}"
+                                               Width="44"/>
+                                </Grid>
+                            </ui:CardExpander.Header>
+                            <ui:CardControl Padding="10"
+                                            Margin="-10 0"
+                                            Background="{DynamicResource ApplicationBackgroundBrush}">
+                                <ui:TextBlock TextWrapping="Wrap"
+                                              Margin="-12 0 6 0"
+                                              Foreground="{DynamicResource BlueGradientBrush}"
+                                              Text="Use the Button to load an external .txt file into memory "/>
+
+                            </ui:CardControl>
+
+                        </ui:CardExpander>
+                        <!--#endregion-->
+
                       <!--#region  COMMAND BUTTONS-->
                         <StackPanel Orientation="Horizontal"
                                   HorizontalAlignment="Right"
                                   Margin="0,10,0,0">
-                            <ui:Button Content="CLEAR"
-                                       Width="100"
+                            <ui:Button Icon="{ui:SymbolIcon Symbol=Delete28, Filled=True, FontSize=34}"
                                        Height="44"
                                        Margin="4,0,4,0"
-                                       Padding="0"
                                        Background="{DynamicResource DangerGradientBrush}"
                                        BorderBrush="Transparent"
-                                       Cursor="Hand"/>
+                                       Cursor="Hand"
+                                       ToolTip="Clear all input fields" />
+
+
                             <ui:Button Content="APPLY"
                                        Width="100"
                                        Height="44"

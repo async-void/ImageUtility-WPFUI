@@ -17,7 +17,7 @@ namespace ImageUtility.ViewModels.Pages
         [RelayCommand]
         private void OnCounterIncrement()
         {
-            _snackBar.Show("Counter incremented!", "Counter Button Pressed", appearance: ControlAppearance.Success, icon: new SymbolIcon(SymbolRegular.Folder48), TimeSpan.FromSeconds(5));
+            _snackBar.Show("Counter incremented!", "Counter Button Pressed", appearance: ControlAppearance.Success, null, TimeSpan.FromSeconds(3));
             if (Counter >= 10)
                 Counter = 0;
             else
