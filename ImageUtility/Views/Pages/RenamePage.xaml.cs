@@ -1,5 +1,6 @@
 ﻿using ImageUtility.ViewModels.Pages;
 using Wpf.Ui.Abstractions.Controls;
+using Wpf.Ui.Controls;
 
 namespace ImageUtility.Views.Pages
 {
@@ -17,6 +18,5 @@ namespace ImageUtility.Views.Pages
             InitializeComponent();
  
         }
-
     }
 }

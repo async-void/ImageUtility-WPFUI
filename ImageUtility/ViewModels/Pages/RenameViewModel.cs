@@ -1,11 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
+using Wpf.Ui.Controls;
 
 namespace ImageUtility.ViewModels.Pages
 {
     public partial class RenameViewModel : ObservableObject
     {
+
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(ApplyCommand))]
         [NotifyCanExecuteChangedFor(nameof(ClearCommand))]
@@ -14,12 +16,19 @@ namespace ImageUtility.ViewModels.Pages
         [NotifyCanExecuteChangedFor(nameof(ApplyCommand))]
         [NotifyCanExecuteChangedFor(nameof(ClearCommand))]
         private string? _destinationDir;
+        [ObservableProperty]
+        private string? _pattern;
+
+        [ObservableProperty]
+        private int _numberingValue;
 
         [RelayCommand(CanExecute = nameof(CanExecuteClear))]
-        private async Task Clear()
+        private void Clear()
         {
             SourceDir = null;
             DestinationDir = null;
+            Pattern = null;
+            NumberingValue = 0;
         }
 
         [RelayCommand(CanExecute = nameof(CanExecuteApply))]
@@ -37,6 +46,7 @@ namespace ImageUtility.ViewModels.Pages
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 Multiselect = false
             };
+            
             if (dialog.ShowDialog() == true)
             {
                 switch (value)

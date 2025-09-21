@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ImageUtility.Views.Pages"
-    xmlns:vm="clr-namespace:ImageUtility.ViewModels.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Width="900"
@@ -12,7 +11,7 @@
     Margin="20,0"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-    d:DataContext="{d:DesignInstance vm:RenameViewModel,
+    d:DataContext="{d:DesignInstance local:RenamePage,
                                      IsDesignTimeCreatable=False}"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -112,6 +111,7 @@
                                               Margin="10 0"/>
                                 <ui:TextBox Grid.Column="2"
                                             Width="220"
+                                            Text="{Binding ViewModel.Pattern}"
                                             PlaceholderText="Part of the name to be removed" />
                             </Grid>
                         </ui:Card>
@@ -126,7 +126,7 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="180" />
+                                        <ColumnDefinition Width="292" />
                                         <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Numbering"
@@ -135,11 +135,15 @@
                                                Foreground="{DynamicResource BlueGradientBrush}"
                                                VerticalAlignment="Center"
                                                Margin="6 0"/>
+                                    <CheckBox Grid.Column="1" 
+                                              HorizontalAlignment="Right"/>
                                     <ui:NumberBox Grid.Column="2"
-                                                  Width="200"
+                                                  Width="120"
                                                   Minimum="0"
                                                   Maximum="10000"
-                                                  PlaceholderText="Number to start at"/>
+                                                  HorizontalAlignment="Left"
+                                                  Value="{Binding ViewModel.NumberingValue}"
+                                                  PlaceholderText="{Binding ViewModel.NumberingPlaceHolder}"/>
                                 </Grid>
                             </ui:CardExpander.Header>
                             <ui:CardControl Padding="10"
