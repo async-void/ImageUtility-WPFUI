@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
-using Wpf.Ui.Extensions;
 
 namespace ImageUtility.ViewModels.Pages
 {

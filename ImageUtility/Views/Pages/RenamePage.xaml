@@ -4,14 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ImageUtility.Views.Pages"
+    xmlns:vm="clr-namespace:ImageUtility.ViewModels.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Width="900"
-    Height="550"
+    Height="Auto"
     Margin="20,0"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-    d:DataContext="{d:DesignInstance local:RenamePage,
+    d:DataContext="{d:DesignInstance vm:RenameViewModel,
                                      IsDesignTimeCreatable=False}"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -25,11 +26,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         
+
         <!--#region LEFT CONTENT-->
 
         <Grid Grid.Column="0">
+
             <StackPanel>
                 <ui:Card Width="600"
+                         Height="Auto"
                          HorizontalAlignment="Left">
                     <StackPanel>
                       <!--#region DIRECTORIES -->
@@ -41,6 +45,7 @@
                                     <ui:TextBox
                                         Width="500"
                                         Margin="4,0,0,4"
+                                        Text="{Binding ViewModel.SourceDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         PlaceholderText="Source Directory" />
                                     <ui:Button
                                         Width="44"
@@ -49,7 +54,9 @@
                                         Padding="0"
                                         Background="{x:Null}"
                                         BorderBrush="Transparent"
-                                        Cursor="Hand">
+                                        Cursor="Hand"
+                                        Command="{Binding ViewModel.SelectDirCommand, Mode=OneWay}"
+                                        CommandParameter="source_dir">
                                         <ui:Button.Content>
                                             <ui:SymbolIcon Filled="True" 
                                                            Symbol="FolderOpen24" 
@@ -63,6 +70,7 @@
                                     <ui:TextBox
                                         Width="500"
                                         Margin="4,0,0,4"
+                                        Text="{Binding ViewModel.DestinationDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         PlaceholderText="Destination Directory" />
                                     <ui:Button 
                                         Width="44"
@@ -71,7 +79,9 @@
                                         Padding="0"
                                         Background="{x:Null}"
                                         BorderBrush="Transparent"
-                                        Cursor="Hand">
+                                        Cursor="Hand"
+                                        Command="{Binding ViewModel.SelectDirCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        CommandParameter="destination_dir">
                                         <ui:Button.Content>
                                             <ui:SymbolIcon Filled="True"
                                                            Symbol="FolderOpen24"
@@ -228,7 +238,8 @@
                                        Background="{DynamicResource DangerGradientBrush}"
                                        BorderBrush="Transparent"
                                        Cursor="Hand"
-                                       ToolTip="Clear all input fields" />
+                                       ToolTip="Clear all input fields"
+                                       Command="{Binding ViewModel.ClearCommand, Mode=OneWay}"/>
 
 
                             <ui:Button Content="APPLY"
@@ -238,15 +249,17 @@
                                        Padding="0"
                                        Background="{DynamicResource SuccessGradientBrush}"
                                        BorderBrush="Transparent"
-                                       Cursor="Hand"/>
+                                       Cursor="Hand"
+                                       Command="{Binding ViewModel.ApplyCommand}"/>
                         </StackPanel>
                         <!--#endregion-->
 
                     </StackPanel>
                     
                 </ui:Card>
-
+  
             </StackPanel>
+
         </Grid>
         <!--#endregion-->
 
@@ -285,4 +298,5 @@
         <!--#endregion   -->
 
     </Grid>
+   
 </Page>
