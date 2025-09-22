@@ -1,11 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ImageUtility.Components;
 using Microsoft.Win32;
+using System.Threading;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Extensions;
 
 namespace ImageUtility.ViewModels.Pages
 {
-    public partial class RenameViewModel : ObservableObject
+    public partial class RenameViewModel(IContentDialogService dialogService) : ObservableObject
     {
 
         [ObservableProperty]
@@ -21,6 +25,8 @@ namespace ImageUtility.ViewModels.Pages
 
         [ObservableProperty]
         private int _numberingValue;
+        [ObservableProperty]
+        private string? _extFilePath;
 
         [RelayCommand(CanExecute = nameof(CanExecuteClear))]
         private void Clear()
@@ -34,7 +40,14 @@ namespace ImageUtility.ViewModels.Pages
         [RelayCommand(CanExecute = nameof(CanExecuteApply))]
         private async Task Apply()
         {
-
+            await dialogService.ShowSimpleDialogAsync(
+                   new SimpleContentDialogCreateOptions
+                   {
+                      Title = "File Renamer",
+                      Content = "Renaming Files...",
+                      PrimaryButtonText = "Save",
+                      CloseButtonText = "Cancel"
+                   }, new CancellationToken());
         }
 
         [RelayCommand]
@@ -62,6 +75,21 @@ namespace ImageUtility.ViewModels.Pages
 
                 }
                
+            }
+        }
+
+        [RelayCommand]
+        private void OnLoadTextFile()
+        {
+            var dialog = new OpenFileDialog()
+            {
+                Title = "Select File",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Filter = "txt files (*.txt)|*.txt",
+            };
+            if (!dialog.ShowDialog() == true)
+            {
+                ExtFilePath = dialog.FileName;
             }
         }
 

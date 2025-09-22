@@ -1,5 +1,6 @@
 ﻿using ImageUtility.ViewModels.Windows;
 using System.Windows;
+using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
@@ -14,18 +15,19 @@ namespace ImageUtility.Views.Windows
         public MainWindow(
             MainWindowViewModel viewModel,
             INavigationViewPageProvider navigationViewPageProvider,
-            INavigationService navigationService
+            INavigationService navigationService, IContentDialogService dialogService
         )
         {
             ViewModel = viewModel;
             DataContext = this;
 
             SystemThemeWatcher.Watch(this);
-
+            
             InitializeComponent();
             SetPageService(navigationViewPageProvider);
-
+           
             navigationService.SetNavigationControl(RootNavigation);
+            dialogService.SetDialogHost(RootContentDialog);
         }
 
         #region INavigationWindow methods

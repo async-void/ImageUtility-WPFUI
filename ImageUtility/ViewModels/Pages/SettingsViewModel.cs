@@ -40,28 +40,11 @@ namespace ImageUtility.ViewModels.Pages
         }
 
         [RelayCommand]
-        private void OnChangeTheme(string parameter)
-        {
-            switch (parameter)
-            {
-                case "theme_light":
-                    if (CurrentTheme == ApplicationTheme.Light)
-                        break;
+        private void OnToggleTheme() =>
+            ApplicationThemeManager.Apply(CurrentTheme =
+            CurrentTheme == ApplicationTheme.Dark
+                ? ApplicationTheme.Light
+                : ApplicationTheme.Dark);
 
-                    ApplicationThemeManager.Apply(ApplicationTheme.Light);
-                    CurrentTheme = ApplicationTheme.Light;
-
-                    break;
-
-                default:
-                    if (CurrentTheme == ApplicationTheme.Dark)
-                        break;
-
-                    ApplicationThemeManager.Apply(ApplicationTheme.Dark);
-                    CurrentTheme = ApplicationTheme.Dark;
-
-                    break;
-            }
-        }
     }
 }

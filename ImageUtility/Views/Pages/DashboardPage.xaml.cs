@@ -15,7 +15,7 @@ namespace ImageUtility.Views.Pages
 
             InitializeComponent();
 
-            viewModel._dialogService.SetDialogHost(RootContentDialog);
+            //viewModel._dialogService.SetDialogHost(RootContentDialog);
             viewModel._snackBar.SetSnackbarPresenter(SnackbarPresenter);
         }
     }

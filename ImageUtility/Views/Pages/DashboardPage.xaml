@@ -45,9 +45,8 @@
         </Grid>
 
         <ui:SnackbarPresenter x:Name="SnackbarPresenter" Grid.Row="2" />
-        <ContentPresenter
-            x:Name="RootContentDialog"
-            Grid.Row="2"
-            Height="100" />
+        <ContentPresenter x:Name="RootContentDialog"
+                          Grid.Row="2"
+                          Height="100" />
     </Grid>
 </Page>

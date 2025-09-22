@@ -9,8 +9,8 @@
     Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
     Width="1200"
     Height="850"
-    MinHeight="650"
     MinWidth="1000"
+    MinHeight="650"
     d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="850"
@@ -54,7 +54,7 @@
             PaneDisplayMode="Left"
             TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}">
             <ui:NavigationView.Header>
-                <ui:BreadcrumbBar x:Name="BreadcrumbBar" Margin="20 10" />
+                <ui:BreadcrumbBar x:Name="BreadcrumbBar" Margin="20,10" />
             </ui:NavigationView.Header>
             <ui:NavigationView.AutoSuggestBox>
                 <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="Search">
@@ -67,11 +67,9 @@
             </ui:NavigationView.AutoSuggestBox>
             <ui:NavigationView.ContentOverlay>
                 <Grid>
-                   
+                    <ContentPresenter x:Name="RootContentDialog" />
                 </Grid>
             </ui:NavigationView.ContentOverlay>
         </ui:NavigationView>
-
-        <ContentPresenter x:Name="RootContentDialog" />
     </Grid>
 </ui:FluentWindow>

@@ -6,10 +6,10 @@ using Wpf.Ui.Controls;
 
 namespace ImageUtility.ViewModels.Pages
 {
-    public partial class DashboardViewModel(ISnackbarService snackBar, IContentDialogService dialog) : ObservableObject
+    public partial class DashboardViewModel(ISnackbarService snackBar) : ObservableObject
     {
         public ISnackbarService _snackBar = snackBar;
-        public IContentDialogService _dialogService = dialog;
+        //public IContentDialogService _dialogService = dialog;
 
         [ObservableProperty]
         private int _counter = 0;

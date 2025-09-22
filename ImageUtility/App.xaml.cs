@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Wpf.Ui;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.DependencyInjection;
 
 namespace ImageUtility
@@ -75,6 +76,7 @@ namespace ImageUtility
         /// </summary>
         private async void OnStartup(object sender, StartupEventArgs e)
         {
+            ApplicationThemeManager.ApplySystemTheme();
             await _host.StartAsync();
         }
 

@@ -93,7 +93,7 @@
                         </ui:Card>
                         <!--#endregion -->
 
-                      <!-- #region RENAME OPTIONS -->
+                      <!-- #region RENAME PATTERN -->
                         <ui:Card HorizontalContentAlignment="Left" 
                                  Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
                                  Padding="8">
@@ -112,7 +112,7 @@
                                 <ui:TextBox Grid.Column="2"
                                             Width="220"
                                             Text="{Binding ViewModel.Pattern}"
-                                            PlaceholderText="Part of the name to be removed" />
+                                            PlaceholderText="ie. filename_{num}" />
                             </Grid>
                         </ui:Card>
                         <!--#endregion-->
@@ -142,8 +142,7 @@
                                                   Minimum="0"
                                                   Maximum="10000"
                                                   HorizontalAlignment="Left"
-                                                  Value="{Binding ViewModel.NumberingValue}"
-                                                  PlaceholderText="{Binding ViewModel.NumberingPlaceHolder}"/>
+                                                  Value="{Binding ViewModel.NumberingValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Grid>
                             </ui:CardExpander.Header>
                             <ui:CardControl Padding="10"
@@ -216,7 +215,8 @@
                                                VerticalContentAlignment="Center"
                                                Cursor="Hand"
                                                Icon="{ui:SymbolIcon Symbol=DocumentText24, Filled=True, FontSize=18}"
-                                               Width="44"/>
+                                               Width="44"
+                                               Command="{Binding ViewModel.LoadTextFileCommand, Mode=OneWay}"/>
                                 </Grid>
                             </ui:CardExpander.Header>
                             <ui:CardControl Padding="10"
@@ -300,7 +300,8 @@
         </Grid>
 
         <!--#endregion   -->
-
+        
+        
     </Grid>
    
 </Page>

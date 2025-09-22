@@ -1,6 +1,4 @@
-﻿using ImageUtility.Views.Pages;
-using ImageUtility.Views.Windows;
-using Microsoft.Extensions.DependencyInjection;
+﻿using ImageUtility.Views.Windows;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 using Wpf.Ui;

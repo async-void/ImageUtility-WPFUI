@@ -2,6 +2,7 @@
     x:Class="ImageUtility.Views.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:ImageUtility.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="clr-namespace:ImageUtility.Helpers"
     xmlns:local="clr-namespace:ImageUtility.Views.Pages"
@@ -14,37 +15,29 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Height="Auto">
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+        <converters:BoolToThemeConverter x:Key="boolToThemeConverter" />
     </Page.Resources>
 
     <StackPanel Margin="20,0">
-        <TextBlock
-            FontSize="20"
-            FontWeight="Medium"
-            Text="Personalization" />
-        <TextBlock Margin="0,12,0,0" Text="Theme" />
-        <RadioButton
-            Margin="0,12,0,0"
-            Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
-            CommandParameter="theme_light"
-            Content="Light"
-            GroupName="themeSelect"
-            IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}" />
-        <RadioButton
-            Margin="0,8,0,0"
-            Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
-            CommandParameter="theme_dark"
-            Content="Dark"
-            GroupName="themeSelect"
-            IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" />
+        <ui:CardExpander Header="Personalization">
+            <ui:Card>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock Margin="0,12,0,0" Text="Theme" />
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+                        <ui:SymbolIcon FontSize="24" Symbol="WeatherMoon24" />
+                        <ui:ToggleSwitch Margin="10" Command="{Binding ViewModel.ToggleThemeCommand}" />
+                        <ui:SymbolIcon FontSize="24" Symbol="WeatherSunny24" />
+                    </StackPanel>
+                </StackPanel>
+            </ui:Card>
+        </ui:CardExpander>
 
-        <TextBlock
-            Margin="0,24,0,0"
-            FontSize="20"
-            FontWeight="Medium"
-            Text="About Image Utility" />
-        <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+        <ui:CardExpander Header="About">
+            <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+        </ui:CardExpander>
     </StackPanel>
 </Page>
