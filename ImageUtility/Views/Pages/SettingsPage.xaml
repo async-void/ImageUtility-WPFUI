@@ -8,6 +8,7 @@
     xmlns:local="clr-namespace:ImageUtility.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Height="Auto"
     d:DataContext="{d:DesignInstance local:SettingsPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
@@ -15,15 +16,14 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d"
-    Height="Auto">
+    mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
         <converters:BoolToThemeConverter x:Key="boolToThemeConverter" />
     </Page.Resources>
 
     <StackPanel Margin="20,0">
-        <ui:CardExpander Header="Personalization">
+        <ui:CardExpander FontStyle="Italic" Header="Personalization">
             <ui:Card>
                 <StackPanel VerticalAlignment="Top">
                     <TextBlock Margin="0,12,0,0" Text="Theme" />
@@ -36,8 +36,14 @@
             </ui:Card>
         </ui:CardExpander>
 
-        <ui:CardExpander Header="About">
-            <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+        <ui:CardExpander FontStyle="Italic" Header="About">
+            <StackPanel>
+                <TextBlock Margin="0,8,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+                <TextBlock
+                    Margin="0,4,9,0"
+                    FontStyle="Italic"
+                    Text="Author : Suncoast Software" />
+            </StackPanel>
         </ui:CardExpander>
     </StackPanel>
 </Page>

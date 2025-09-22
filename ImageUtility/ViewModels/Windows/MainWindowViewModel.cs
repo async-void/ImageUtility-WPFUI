@@ -31,6 +31,12 @@ namespace ImageUtility.ViewModels.Windows
                 Content = "Renamer",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Edit24 },
                 TargetPageType = typeof(Views.Pages.RenamePage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Resize",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.ResizeImage24 },
+                TargetPageType = typeof(Views.Pages.ResizePage)
             }
         ];
 

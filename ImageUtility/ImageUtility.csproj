@@ -5,6 +5,7 @@
     <TargetFramework>net9.0-windows</TargetFramework>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Image_Utility.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.229.1</AssemblyVersion>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>

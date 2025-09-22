@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ImageUtility.Views.Pages"
+    xmlns:converters="clr-namespace:ImageUtility.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Width="900"
@@ -17,7 +18,10 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <converters:BoolToEnabledConverter x:Key="boolToEnabledConverter" />
+    </Page.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -38,7 +42,8 @@
                       <!--#region DIRECTORIES -->
                         <ui:Card HorizontalContentAlignment="Left" 
                                  Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                 Padding="8">
+                                 Padding="8"
+                                 Margin="0 0 0 1">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <ui:TextBox
@@ -92,11 +97,60 @@
                             </StackPanel>
                         </ui:Card>
                         <!--#endregion -->
+                        
+                      <!-- #region USE EXTERNAL TXT FILE -->
+                        <ui:CardExpander HorizontalContentAlignment="Left" 
+                                         Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                         Padding="8"
+                                         Margin="0 1 0 1">
+                            <ui:CardExpander.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="308" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Use External Txt File"
+                                               FontSize="16"
+                                               FontStyle="Oblique"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource BlueGradientBrush}"
+                                               Margin="6 0"/>
+                                    <CheckBox Grid.Column="1"
+                                              HorizontalAlignment="Right"
+                                              IsChecked="{Binding ViewModel.UseExternalTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ui:Button Grid.Column="2" 
+                                               VerticalContentAlignment="Center"
+                                               Cursor="Hand"
+                                               Icon="{ui:SymbolIcon Symbol=DocumentText24, Filled=True, FontSize=18}"
+                                               Width="44"
+                                               Command="{Binding ViewModel.LoadTextFileCommand, Mode=OneWay}"/>
+                                </Grid>
+                            </ui:CardExpander.Header>
+                            <ui:CardControl Padding="10"
+                                            Margin="-10 0"
+                                            Background="{DynamicResource ApplicationBackgroundBrush}" >
+                                <StackPanel Margin="-12 0 6 0">
+                                    <ui:TextBlock TextWrapping="Wrap"
+                                                  Foreground="{DynamicResource BlueGradientBrush}"
+                                                  Text="Enabling the checkbox disables [Pattern] &amp; [Numbering]"/>
+                                    <ui:TextBlock TextWrapping="Wrap"
+                                                  Foreground="{DynamicResource BlueGradientBrush}"
+                                                  Text="Use the 'Load' button to load an external text file into memory." />
+                                </StackPanel>
+                                
 
+                            </ui:CardControl>
+
+                        </ui:CardExpander>
+                        <!--#endregion-->
+                        
                       <!-- #region RENAME PATTERN -->
                         <ui:Card HorizontalContentAlignment="Left" 
                                  Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                 Padding="8">
+                                 Padding="8"
+                                 Margin="0 1 0 1"
+                                 IsEnabled="{Binding ViewModel.UseExternalTxt, Converter={StaticResource boolToEnabledConverter}}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -112,7 +166,8 @@
                                 <ui:TextBox Grid.Column="2"
                                             Width="220"
                                             Text="{Binding ViewModel.Pattern}"
-                                            PlaceholderText="ie. filename_{num}" />
+                                            PlaceholderText="ie. filename_{num}" 
+                                            />
                             </Grid>
                         </ui:Card>
                         <!--#endregion-->
@@ -121,7 +176,9 @@
 
                         <ui:CardExpander HorizontalContentAlignment="Left" 
                                          Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                         Padding="8">
+                                         Padding="8"
+                                         Margin="0 1 0 1"
+                                         IsEnabled="{Binding ViewModel.UseExternalTxt, Converter={StaticResource boolToEnabledConverter}}">
                             <ui:CardExpander.Header>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -162,7 +219,8 @@
                       <!-- #region OPEN DESTINATION ON COMPLETION -->
                         <ui:CardExpander HorizontalContentAlignment="Left" 
                                          Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                         Padding="8">
+                                         Padding="8"
+                                         Margin="0 1 0 1">
                             <ui:CardExpander.Header>
                                 <Grid>
                                 <Grid.ColumnDefinitions>
@@ -191,44 +249,6 @@
                                 
                             </ui:CardControl>
                             
-                        </ui:CardExpander>
-                        <!--#endregion-->
-
-                      <!-- #region USE EXTERNAL TXT FILE -->
-                        <ui:CardExpander HorizontalContentAlignment="Left" 
-                                         Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                         Padding="8">
-                            <ui:CardExpander.Header>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="308" />
-                                        <ColumnDefinition Width="1*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Use External Txt File"
-                                               FontSize="16"
-                                               FontStyle="Oblique"
-                                               VerticalAlignment="Center"
-                                               Foreground="{DynamicResource BlueGradientBrush}"
-                                               Margin="6 0"/>
-                                    <ui:Button Grid.Column="2" 
-                                               VerticalContentAlignment="Center"
-                                               Cursor="Hand"
-                                               Icon="{ui:SymbolIcon Symbol=DocumentText24, Filled=True, FontSize=18}"
-                                               Width="44"
-                                               Command="{Binding ViewModel.LoadTextFileCommand, Mode=OneWay}"/>
-                                </Grid>
-                            </ui:CardExpander.Header>
-                            <ui:CardControl Padding="10"
-                                            Margin="-10 0"
-                                            Background="{DynamicResource ApplicationBackgroundBrush}">
-                                <ui:TextBlock TextWrapping="Wrap"
-                                              Margin="-12 0 6 0"
-                                              Foreground="{DynamicResource BlueGradientBrush}"
-                                              Text="Use the Button to load an external .txt file into memory "/>
-
-                            </ui:CardControl>
-
                         </ui:CardExpander>
                         <!--#endregion-->
 

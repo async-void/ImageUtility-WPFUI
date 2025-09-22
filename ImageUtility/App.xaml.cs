@@ -60,6 +60,8 @@ namespace ImageUtility
                 services.AddSingleton<SettingsViewModel>();
                 services.AddSingleton<RenamePage>();
                 services.AddSingleton<RenameViewModel>();
+                services.AddSingleton<ResizePage>();
+                services.AddSingleton<ResizeViewModel>();
 
             }).Build();
 

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using ImageUtility.Components;
 using Microsoft.Win32;
+using System.IO;
 using System.Threading;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
@@ -27,6 +28,10 @@ namespace ImageUtility.ViewModels.Pages
         private int _numberingValue;
         [ObservableProperty]
         private string? _extFilePath;
+        [ObservableProperty]
+        private bool _useExternalTxt;
+
+        private List<string>? FileNames;
 
         [RelayCommand(CanExecute = nameof(CanExecuteClear))]
         private void Clear()
@@ -43,10 +48,10 @@ namespace ImageUtility.ViewModels.Pages
             await dialogService.ShowSimpleDialogAsync(
                    new SimpleContentDialogCreateOptions
                    {
-                      Title = "File Renamer",
-                      Content = "Renaming Files...",
-                      PrimaryButtonText = "Save",
-                      CloseButtonText = "Cancel"
+                       Title = "File Renamer",
+                       Content = "Proccessing Files...",
+                       PrimaryButtonText = "Save",
+                       CloseButtonText = "Cancel"
                    }, new CancellationToken());
         }
 
@@ -79,7 +84,7 @@ namespace ImageUtility.ViewModels.Pages
         }
 
         [RelayCommand]
-        private void OnLoadTextFile()
+        private async Task OnLoadTextFile()
         {
             var dialog = new OpenFileDialog()
             {
@@ -87,9 +92,17 @@ namespace ImageUtility.ViewModels.Pages
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 Filter = "txt files (*.txt)|*.txt",
             };
-            if (!dialog.ShowDialog() == true)
+            if (dialog.ShowDialog() == true)
             {
-                ExtFilePath = dialog.FileName;
+                FileNames = [];
+                
+                using StreamReader sr = new(dialog.FileName);
+                while (!sr.EndOfStream)
+                {
+                    var line = await sr.ReadLineAsync();
+                    if (!string.IsNullOrEmpty(line))
+                        FileNames.Add(line.Trim());
+                } 
             }
         }
 
