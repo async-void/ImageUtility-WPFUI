@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\dashboard.jpg" />
     <Resource Include="Image_Utility.ico" />
   </ItemGroup>
 
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\dashboard.jpg" />
     <None Remove="Assets\wpfui-icon-256.png" />
     <None Remove="Assets\wpfui-icon-1024.png" />
   </ItemGroup>

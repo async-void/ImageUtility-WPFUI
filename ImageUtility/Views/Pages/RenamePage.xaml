@@ -2,9 +2,9 @@
     x:Class="ImageUtility.Views.Pages.RenamePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:ImageUtility.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ImageUtility.Views.Pages"
-    xmlns:converters="clr-namespace:ImageUtility.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Width="900"
@@ -21,36 +21,41 @@
     <Page.Resources>
         <converters:BoolToEnabledConverter x:Key="boolToEnabledConverter" />
     </Page.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="20" /> 
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
         <!--#region LEFT CONTENT-->
 
         <Grid Grid.Column="0">
 
             <StackPanel>
-                <ui:Card Width="600"
-                         Height="Auto"
-                         HorizontalAlignment="Left">
+                <ui:Card
+                    Width="600"
+                    Height="Auto"
+                    HorizontalAlignment="Left">
                     <StackPanel>
-                      <!--#region DIRECTORIES -->
-                        <ui:Card HorizontalContentAlignment="Left" 
-                                 Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                 Padding="8"
-                                 Margin="0 0 0 1">
+                        <!--#region DIRECTORIES-->
+                        <ui:Card
+                            Margin="0,0,0,1"
+                            Padding="8"
+                            HorizontalContentAlignment="Left"
+                            Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <ui:TextBox
                                         Width="500"
                                         Margin="4,0,0,4"
-                                        Text="{Binding ViewModel.SourceDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        PlaceholderText="Source Directory" />
+                                        PlaceholderText="Source Directory"
+                                        Text="{Binding ViewModel.SourceDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <ui:Button
                                         Width="44"
                                         Height="34"
@@ -58,14 +63,15 @@
                                         Padding="0"
                                         Background="{x:Null}"
                                         BorderBrush="Transparent"
-                                        Cursor="Hand"
                                         Command="{Binding ViewModel.SelectDirCommand, Mode=OneWay}"
-                                        CommandParameter="source_dir">
+                                        CommandParameter="source_dir"
+                                        Cursor="Hand">
                                         <ui:Button.Content>
-                                            <ui:SymbolIcon Filled="True" 
-                                                           Symbol="FolderOpen24" 
-                                                           FontSize="28" 
-                                                           Foreground="{DynamicResource BlueGradientBrush}"/>
+                                            <ui:SymbolIcon
+                                                Filled="True"
+                                                FontSize="28"
+                                                Foreground="{DynamicResource BlueGradientBrush}"
+                                                Symbol="FolderOpen24" />
                                         </ui:Button.Content>
                                     </ui:Button>
                                 </StackPanel>
@@ -74,35 +80,37 @@
                                     <ui:TextBox
                                         Width="500"
                                         Margin="4,0,0,4"
-                                        Text="{Binding ViewModel.DestinationDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        PlaceholderText="Destination Directory" />
-                                    <ui:Button 
+                                        PlaceholderText="Destination Directory"
+                                        Text="{Binding ViewModel.DestinationDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <ui:Button
                                         Width="44"
                                         Height="34"
                                         Margin="4,0,0,4"
                                         Padding="0"
                                         Background="{x:Null}"
                                         BorderBrush="Transparent"
-                                        Cursor="Hand"
                                         Command="{Binding ViewModel.SelectDirCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                        CommandParameter="destination_dir">
+                                        CommandParameter="destination_dir"
+                                        Cursor="Hand">
                                         <ui:Button.Content>
-                                            <ui:SymbolIcon Filled="True"
-                                                           Symbol="FolderOpen24"
-                                                           FontSize="28"
-                                                           Foreground="{DynamicResource BlueGradientBrush}"/>
+                                            <ui:SymbolIcon
+                                                Filled="True"
+                                                FontSize="28"
+                                                Foreground="{DynamicResource BlueGradientBrush}"
+                                                Symbol="FolderOpen24" />
                                         </ui:Button.Content>
                                     </ui:Button>
                                 </StackPanel>
                             </StackPanel>
                         </ui:Card>
-                        <!--#endregion -->
-                        
-                      <!-- #region USE EXTERNAL TXT FILE -->
-                        <ui:CardExpander HorizontalContentAlignment="Left" 
-                                         Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                         Padding="8"
-                                         Margin="0 1 0 1">
+                        <!--#endregion-->
+
+                        <!--#region USE EXTERNAL TXT FILE-->
+                        <ui:CardExpander
+                            Margin="0,1,0,1"
+                            Padding="8"
+                            HorizontalContentAlignment="Left"
+                            Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}">
                             <ui:CardExpander.Header>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -110,75 +118,86 @@
                                         <ColumnDefinition Width="308" />
                                         <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Use External Txt File"
-                                               FontSize="16"
-                                               FontStyle="Oblique"
-                                               VerticalAlignment="Center"
-                                               Foreground="{DynamicResource BlueGradientBrush}"
-                                               Margin="6 0"/>
-                                    <CheckBox Grid.Column="1"
-                                              HorizontalAlignment="Right"
-                                              IsChecked="{Binding ViewModel.UseExternalTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <ui:Button Grid.Column="2" 
-                                               VerticalContentAlignment="Center"
-                                               Cursor="Hand"
-                                               Icon="{ui:SymbolIcon Symbol=DocumentText24, Filled=True, FontSize=18}"
-                                               Width="44"
-                                               Command="{Binding ViewModel.LoadTextFileCommand, Mode=OneWay}"/>
+                                    <TextBlock
+                                        Margin="6,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        FontStyle="Oblique"
+                                        Foreground="{DynamicResource BlueGradientBrush}"
+                                        Text="Use External Txt File" />
+                                    <CheckBox
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Right"
+                                        IsChecked="{Binding ViewModel.UseExternalTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <ui:Button
+                                        Grid.Column="2"
+                                        Width="44"
+                                        VerticalContentAlignment="Center"
+                                        Command="{Binding ViewModel.LoadTextFileCommand, Mode=OneWay}"
+                                        Cursor="Hand"
+                                        Icon="{ui:SymbolIcon Symbol=DocumentText24,
+                                                             Filled=True,
+                                                             FontSize=18}" />
                                 </Grid>
                             </ui:CardExpander.Header>
-                            <ui:CardControl Padding="10"
-                                            Margin="-10 0"
-                                            Background="{DynamicResource ApplicationBackgroundBrush}" >
-                                <StackPanel Margin="-12 0 6 0">
-                                    <ui:TextBlock TextWrapping="Wrap"
-                                                  Foreground="{DynamicResource BlueGradientBrush}"
-                                                  Text="Enabling the checkbox disables [Pattern] &amp; [Numbering]"/>
-                                    <ui:TextBlock TextWrapping="Wrap"
-                                                  Foreground="{DynamicResource BlueGradientBrush}"
-                                                  Text="Use the 'Load' button to load an external text file into memory." />
+                            <ui:CardControl
+                                Margin="-10,0"
+                                Padding="10"
+                                Background="{DynamicResource ApplicationBackgroundBrush}">
+                                <StackPanel Margin="-12,0,6,0">
+                                    <ui:TextBlock
+                                        Foreground="{DynamicResource BlueGradientBrush}"
+                                        Text="Enabling the checkbox disables [Pattern] &amp; [Numbering]"
+                                        TextWrapping="Wrap" />
+                                    <ui:TextBlock
+                                        Foreground="{DynamicResource BlueGradientBrush}"
+                                        Text="Use the 'Load' button to load an external text file into memory."
+                                        TextWrapping="Wrap" />
                                 </StackPanel>
-                                
+
 
                             </ui:CardControl>
 
                         </ui:CardExpander>
                         <!--#endregion-->
-                        
-                      <!-- #region RENAME PATTERN -->
-                        <ui:Card HorizontalContentAlignment="Left" 
-                                 Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                 Padding="8"
-                                 Margin="0 1 0 1"
-                                 IsEnabled="{Binding ViewModel.UseExternalTxt, Converter={StaticResource boolToEnabledConverter}}">
+
+                        <!--#region RENAME PATTERN-->
+                        <ui:Card
+                            Margin="0,1,0,1"
+                            Padding="8"
+                            HorizontalContentAlignment="Left"
+                            Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            IsEnabled="{Binding ViewModel.UseExternalTxt, Converter={StaticResource boolToEnabledConverter}}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="214" />
                                     <ColumnDefinition Width="1*" />
                                 </Grid.ColumnDefinitions>
-                                <ui:TextBlock Grid.Column="0"
-                                              Text="Pattern"
-                                              FontSize="16"
-                                              Foreground="{DynamicResource BlueGradientBrush}" 
-                                              VerticalAlignment="Center"
-                                              Margin="10 0"/>
-                                <ui:TextBox Grid.Column="2"
-                                            Width="220"
-                                            Text="{Binding ViewModel.Pattern}"
-                                            PlaceholderText="ie. filename_{num}" 
-                                            />
+                                <ui:TextBlock
+                                    Grid.Column="0"
+                                    Margin="10,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource BlueGradientBrush}"
+                                    Text="Pattern" />
+                                <ui:TextBox
+                                    Grid.Column="2"
+                                    Width="220"
+                                    PlaceholderText="ie. filename_{num}"
+                                    Text="{Binding ViewModel.Pattern}" />
                             </Grid>
                         </ui:Card>
                         <!--#endregion-->
-                        
-                      <!--#region USE NUMBERING-->
 
-                        <ui:CardExpander HorizontalContentAlignment="Left" 
-                                         Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                         Padding="8"
-                                         Margin="0 1 0 1"
-                                         IsEnabled="{Binding ViewModel.UseExternalTxt, Converter={StaticResource boolToEnabledConverter}}">
+                        <!--#region USE NUMBERING-->
+
+                        <ui:CardExpander
+                            Margin="0,1,0,1"
+                            Padding="8"
+                            HorizontalContentAlignment="Left"
+                            Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            IsEnabled="{Binding ViewModel.UseExternalTxt, Converter={StaticResource boolToEnabledConverter}}">
                             <ui:CardExpander.Header>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -186,127 +205,142 @@
                                         <ColumnDefinition Width="292" />
                                         <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Numbering"
-                                               FontSize="16"
-                                               FontStyle="Oblique"
-                                               Foreground="{DynamicResource BlueGradientBrush}"
-                                               VerticalAlignment="Center"
-                                               Margin="6 0"/>
-                                    <CheckBox Grid.Column="1" 
-                                              HorizontalAlignment="Right"/>
-                                    <ui:NumberBox Grid.Column="2"
-                                                  Width="120"
-                                                  Minimum="0"
-                                                  Maximum="10000"
-                                                  HorizontalAlignment="Left"
-                                                  Value="{Binding ViewModel.NumberingValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock
+                                        Margin="6,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        FontStyle="Oblique"
+                                        Foreground="{DynamicResource BlueGradientBrush}"
+                                        Text="Numbering" />
+                                    <CheckBox Grid.Column="1" HorizontalAlignment="Right" />
+                                    <ui:NumberBox
+                                        Grid.Column="2"
+                                        Width="120"
+                                        HorizontalAlignment="Left"
+                                        Maximum="10000"
+                                        Minimum="0"
+                                        Value="{Binding ViewModel.NumberingValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 </Grid>
                             </ui:CardExpander.Header>
-                            <ui:CardControl Padding="10"
-                                            Margin="-10 0"
-                                            Background="{DynamicResource ApplicationBackgroundBrush}">
-                                <ui:TextBlock TextWrapping="Wrap"
-                                              Margin="-12 0 6 0"
-                                              Foreground="{DynamicResource BlueGradientBrush}"
-                                              Text="Use numbering - this is the number to start the renamer at"/>
+                            <ui:CardControl
+                                Margin="-10,0"
+                                Padding="10"
+                                Background="{DynamicResource ApplicationBackgroundBrush}">
+                                <ui:TextBlock
+                                    Margin="-12,0,6,0"
+                                    Foreground="{DynamicResource BlueGradientBrush}"
+                                    Text="Use numbering - this is the number to start the renamer at"
+                                    TextWrapping="Wrap" />
 
                             </ui:CardControl>
 
                         </ui:CardExpander>
-                        
+
                         <!--#endregion-->
 
-                      <!-- #region OPEN DESTINATION ON COMPLETION -->
-                        <ui:CardExpander HorizontalContentAlignment="Left" 
-                                         Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                         Padding="8"
-                                         Margin="0 1 0 1">
+                        <!--#region OPEN DESTINATION ON COMPLETION-->
+                        <ui:CardExpander
+                            Margin="0,1,0,1"
+                            Padding="8"
+                            HorizontalContentAlignment="Left"
+                            Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}">
                             <ui:CardExpander.Header>
                                 <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="302" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Open on Completion"
-                                               FontSize="16"
-                                               FontStyle="Oblique"
-                                               Foreground="{DynamicResource BlueGradientBrush}"
-                                               Margin="6 0"/>
-                                    <ui:ToggleSwitch Grid.Column="2" 
-                                                     
-                                                     VerticalContentAlignment="Center"
-                                                     Background="{DynamicResource BlueGradientBrush}"/>
-                            </Grid>  
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="302" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Margin="6,0"
+                                        FontSize="16"
+                                        FontStyle="Oblique"
+                                        Foreground="{DynamicResource BlueGradientBrush}"
+                                        Text="Open on Completion" />
+                                    <ui:ToggleSwitch
+                                        Grid.Column="2"
+                                        VerticalContentAlignment="Center"
+                                        Background="{DynamicResource BlueGradientBrush}" />
+                                </Grid>
                             </ui:CardExpander.Header>
-                            <ui:CardControl Padding="10"
-                                            Margin="-10 0"
-                                            Background="{DynamicResource ApplicationBackgroundBrush}">
-                                <ui:TextBlock TextWrapping="Wrap"
-                                              Margin="-12 0 6 0"
-                                              Foreground="{DynamicResource BlueGradientBrush}"
-                                              Text="Open the destination directory when renaming is complete."/>
-                                
+                            <ui:CardControl
+                                Margin="-10,0"
+                                Padding="10"
+                                Background="{DynamicResource ApplicationBackgroundBrush}">
+                                <ui:TextBlock
+                                    Margin="-12,0,6,0"
+                                    Foreground="{DynamicResource BlueGradientBrush}"
+                                    Text="Open the destination directory when renaming is complete."
+                                    TextWrapping="Wrap" />
+
                             </ui:CardControl>
-                            
+
                         </ui:CardExpander>
                         <!--#endregion-->
 
-                      <!--#region  COMMAND BUTTONS-->
-                        <StackPanel Orientation="Horizontal"
-                                  HorizontalAlignment="Right"
-                                  Margin="0,10,0,0">
-                            <ui:Button Icon="{ui:SymbolIcon Symbol=Delete28, Filled=True, FontSize=34}"
-                                       Height="44"
-                                       Margin="4,0,4,0"
-                                       Background="{DynamicResource DangerGradientBrush}"
-                                       BorderBrush="Transparent"
-                                       Cursor="Hand"
-                                       ToolTip="Clear all input fields"
-                                       Command="{Binding ViewModel.ClearCommand, Mode=OneWay}"/>
+                        <!--#region  COMMAND BUTTONS-->
+                        <StackPanel
+                            Margin="0,10,0,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <ui:Button
+                                Height="44"
+                                Margin="4,0,4,0"
+                                Background="{DynamicResource DangerGradientBrush}"
+                                BorderBrush="Transparent"
+                                Command="{Binding ViewModel.ClearCommand, Mode=OneWay}"
+                                Cursor="Hand"
+                                Icon="{ui:SymbolIcon Symbol=Delete28,
+                                                     Filled=True,
+                                                     FontSize=34}"
+                                ToolTip="Clear all input fields" />
 
 
-                            <ui:Button Content="APPLY"
-                                       Width="100"
-                                       Height="44"
-                                       Margin="4,0,0,0"
-                                       Padding="0"
-                                       Background="{DynamicResource SuccessGradientBrush}"
-                                       BorderBrush="Transparent"
-                                       Cursor="Hand"
-                                       Command="{Binding ViewModel.ApplyCommand}"/>
+                            <ui:Button
+                                Width="100"
+                                Height="44"
+                                Margin="4,0,0,0"
+                                Padding="0"
+                                Background="{DynamicResource SuccessGradientBrush}"
+                                BorderBrush="Transparent"
+                                Command="{Binding ViewModel.ApplyCommand}"
+                                Content="APPLY"
+                                Cursor="Hand" />
                         </StackPanel>
                         <!--#endregion-->
 
                     </StackPanel>
-                    
+
                 </ui:Card>
-  
+
             </StackPanel>
 
         </Grid>
         <!--#endregion-->
 
-        <!--#region RIGHT CONTENT -->
+        <!--#region RIGHT CONTENT-->
 
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ui:Card Grid.Row="0"
-                     Width="240"
-                     HorizontalAlignment="Left">
+            <ui:Card
+                Grid.Row="0"
+                Width="240"
+                HorizontalAlignment="Left">
                 <StackPanel>
-                    <TextBlock Text="Instructions" 
-                               FontWeight="Bold" 
-                               FontSize="16"
-                               FontStyle="Oblique"
-                               Foreground="{DynamicResource BlueGradientBrush}"
-                               Margin="0,0,0,8" />
-                    <TextBlock TextWrapping="Wrap"
-                               FontStyle="Italic"
-                               Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+                    <TextBlock
+                        Margin="0,0,0,8"
+                        FontSize="16"
+                        FontStyle="Oblique"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource BlueGradientBrush}"
+                        Text="Instructions" />
+                    <TextBlock
+                        FontStyle="Italic"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        TextWrapping="Wrap">
                         <Run Text="1. Select the source directory containing the images you want to rename." />
                         <LineBreak />
                         <Run Text="2. Select the destination directory where the renamed images will be saved." />
@@ -319,9 +353,12 @@
             </ui:Card>
         </Grid>
 
-        <!--#endregion   -->
-        
-        
+        <!--#endregion-->
+
+        <ui:SnackbarPresenter
+            x:Name="SnackbarPresenter"
+            Grid.Row="1"
+            Grid.Column="0" />
     </Grid>
-   
+
 </Page>

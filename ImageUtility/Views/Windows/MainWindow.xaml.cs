@@ -25,7 +25,7 @@ namespace ImageUtility.Views.Windows
             
             InitializeComponent();
             SetPageService(navigationViewPageProvider);
-           
+            
             navigationService.SetNavigationControl(RootNavigation);
             dialogService.SetDialogHost(RootContentDialog);
         }

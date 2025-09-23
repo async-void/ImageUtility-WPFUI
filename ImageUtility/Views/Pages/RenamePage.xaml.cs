@@ -17,6 +17,7 @@ namespace ImageUtility.Views.Pages
             DataContext = this;
 
             InitializeComponent();
+            ViewModel._snackBar.SetSnackbarPresenter(SnackbarPresenter);
             
         }
     }

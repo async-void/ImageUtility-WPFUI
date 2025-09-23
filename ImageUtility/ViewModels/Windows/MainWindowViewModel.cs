@@ -16,7 +16,7 @@ namespace ImageUtility.ViewModels.Windows
         [
             new NavigationViewItem()
             {
-                Content = "Home",
+                Content = "Dashboard",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
             },

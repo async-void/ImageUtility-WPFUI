@@ -10,8 +10,10 @@ using Wpf.Ui.Extensions;
 
 namespace ImageUtility.ViewModels.Pages
 {
-    public partial class RenameViewModel(IContentDialogService dialogService) : ObservableObject
+    public partial class RenameViewModel(IContentDialogService dialogService, ISnackbarService snackBar) : ObservableObject
     {
+        public ISnackbarService _snackBar = snackBar;
+        public IContentDialogService _dialogService = dialogService;
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(ApplyCommand))]
@@ -36,7 +38,7 @@ namespace ImageUtility.ViewModels.Pages
         [RelayCommand(CanExecute = nameof(CanExecuteClear))]
         private void Clear()
         {
-            SourceDir = null;
+            SourceDir = null; 
             DestinationDir = null;
             Pattern = null;
             NumberingValue = 0;
@@ -45,14 +47,15 @@ namespace ImageUtility.ViewModels.Pages
         [RelayCommand(CanExecute = nameof(CanExecuteApply))]
         private async Task Apply()
         {
-            await dialogService.ShowSimpleDialogAsync(
-                   new SimpleContentDialogCreateOptions
-                   {
-                       Title = "File Renamer",
-                       Content = "Proccessing Files...",
-                       PrimaryButtonText = "Save",
-                       CloseButtonText = "Cancel"
-                   }, new CancellationToken());
+            //await dialogService.ShowSimpleDialogAsync(
+            //       new SimpleContentDialogCreateOptions
+            //       {
+            //           Title = "File Renamer",
+            //           Content = "Proccessing Files...",
+            //           PrimaryButtonText = "Save",
+            //           CloseButtonText = "Cancel"
+            //       }, new CancellationToken());
+            _snackBar.Show("Counter incremented!", "Counter Button Pressed", appearance: ControlAppearance.Success, null, TimeSpan.FromSeconds(3));
         }
 
         [RelayCommand]
