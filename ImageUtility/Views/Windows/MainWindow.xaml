@@ -9,7 +9,6 @@
     Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
     Width="1200"
     Height="850"
-    MinWidth="1000"
     MinHeight="650"
     d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=False}"
@@ -48,6 +47,7 @@
             FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
             FrameMargin="0"
             IsBackButtonVisible="Visible"
+            IsPaneOpen="False"
             IsPaneToggleVisible="True"
             MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
             OpenPaneLength="210"

@@ -18,7 +18,9 @@
     ScrollViewer.CanContentScroll="False"
     mc:Ignorable="d">
 
+
     <Grid>
+
         <ui:VirtualizingItemsControl
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             ItemsSource="{Binding ViewModel.Colors, Mode=OneWay}"
@@ -38,5 +40,8 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ui:VirtualizingItemsControl>
+
     </Grid>
+
+
 </Page>

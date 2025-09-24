@@ -29,24 +29,24 @@
 
     <!--  GRADIENTS  -->
 
-    <LinearGradientBrush x:Key="TitlePrimaryGradientBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0.0" Color="{StaticResource PrimaryGray}" />
-        <GradientStop Offset="1.0" Color="{StaticResource SecondaryGray}" />
+    <LinearGradientBrush x:Key="TitlePrimaryGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.0" Color="{StaticResource SecondaryGray}" />
+        <GradientStop Offset="1.0" Color="{StaticResource PrimaryGray}" />
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="BlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0.0" Color="{StaticResource PrimaryBlue}" />
-        <GradientStop Offset="1.0" Color="{StaticResource LightBlue}" />
+    <LinearGradientBrush x:Key="BlueGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.0" Color="{StaticResource LightBlue}" />
+        <GradientStop Offset="1.0" Color="{StaticResource PrimaryBlue}" />
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="DangerGradientBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0.0" Color="{StaticResource PrimaryRed}" />
-        <GradientStop Offset="1.0" Color="{StaticResource LightRed}" />
+    <LinearGradientBrush x:Key="DangerGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.0" Color="{StaticResource LightRed}" />
+        <GradientStop Offset="1.0" Color="{StaticResource PrimaryRed}" />
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="SuccessGradientBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0.0" Color="{StaticResource PrimaryGreen}" />
-        <GradientStop Offset="1.0" Color="{StaticResource LightGreen}" />
+    <LinearGradientBrush x:Key="SuccessGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.0" Color="{StaticResource LightGreen}" />
+        <GradientStop Offset="1.0" Color="{StaticResource PrimaryGreen}" />
     </LinearGradientBrush>
 
 </ResourceDictionary>
