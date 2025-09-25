@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+
+
+    <Style TargetType="Border" x:Key="HoverableBorderStyle">
+        <Setter Property="Background" Value="{StaticResource ControlFillColorSecondaryBrush}"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource ControlFillColorDefaultBrush}"/>
+                
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

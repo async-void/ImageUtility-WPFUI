@@ -9,11 +9,10 @@
     Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
     Width="1200"
     Height="850"
-    MinHeight="650"
+    MaxWidth="1600"
+    MaxHeight="1000"
     d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=False}"
-    d:DesignHeight="850"
-    d:DesignWidth="1200"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     ExtendsContentIntoTitleBar="True"
