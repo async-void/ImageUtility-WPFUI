@@ -1,10 +1,11 @@
 ﻿using ImageUtility.ViewModels.Windows;
 using System.Windows;
-using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
+
+
 
 namespace ImageUtility.Views.Windows
 {
@@ -51,7 +52,6 @@ namespace ImageUtility.Views.Windows
         {
             base.OnClosed(e);
 
-            // Make sure that closing this window will begin the process of closing the application.
             Application.Current.Shutdown();
         }
 
@@ -64,5 +64,20 @@ namespace ImageUtility.Views.Windows
         {
             throw new NotImplementedException();
         }
+
+        //private void RootNavigation_ItemInvoked(object sender, EventArgs args)
+        //{
+        //    if (RootNavigation.SelectedItem is NavigationViewItem item)
+        //    {
+        //        var tag = item.Tag?.ToString();
+
+        //        if (tag == "exit")
+        //        {
+        //            Application.Current.Shutdown();
+        //            return;
+        //        }
+        //    }
+
+        //}
     }
 }

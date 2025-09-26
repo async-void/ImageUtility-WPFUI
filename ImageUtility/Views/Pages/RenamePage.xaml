@@ -33,7 +33,6 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-
         <!--#region LEFT CONTENT-->
 
         <Grid Grid.Column="0">
@@ -317,7 +316,6 @@
         </Grid>
         <!--#endregion-->
 
-
         <!--#region RIGHT CONTENT-->
 
         <Grid Grid.Column="2">
@@ -354,7 +352,6 @@
         </Grid>
 
         <!--#endregion-->
-
 
         <ui:SnackbarPresenter
             x:Name="SnackbarPresenter"

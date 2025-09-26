@@ -17,22 +17,22 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Viewbox Stretch="Uniform"
-             VerticalAlignment="Top">
-        
-   
-    <Grid HorizontalAlignment="Center"
-          VerticalAlignment="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+    <Viewbox VerticalAlignment="Top" Stretch="Uniform">
 
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center"
-                    VerticalAlignment="Top">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
 
-            <!--#region  HEADER IMAGE-->
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top">
+
+                <!--#region  HEADER IMAGE-->
 
                 <Border
                     Width="900"
@@ -45,14 +45,16 @@
                     </Border.Background>
                 </Border>
 
-            <!--#endregion-->
+                <!--#endregion-->
 
-            <!--#region CARDS-->
+                <!--#region CARDS-->
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
 
-                    <Border Margin="5" HorizontalAlignment="Center"
-                            Style="{StaticResource HoverableBorderStyle}">
+                    <Border
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource HoverableBorderStyle}">
                         <Grid
                             Width="200"
                             Height="190"
@@ -87,8 +89,10 @@
                         </Grid>
                     </Border>
 
-                    <Border Margin="5" HorizontalAlignment="Center"
-                            Style="{StaticResource HoverableBorderStyle}">
+                    <Border
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource HoverableBorderStyle}">
                         <Grid
                             Width="200"
                             Height="190"
@@ -123,8 +127,10 @@
                         </Grid>
                     </Border>
 
-                    <Border Margin="5" HorizontalAlignment="Center"
-                            Style="{StaticResource HoverableBorderStyle}">
+                    <Border
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource HoverableBorderStyle}">
                         <Grid
                             Width="200"
                             Height="190"
@@ -161,10 +167,10 @@
 
                 </StackPanel>
 
-            <!--#endregion-->
+                <!--#endregion-->
 
-        </StackPanel>
+            </StackPanel>
 
-    </Grid>
+        </Grid>
     </Viewbox>
 </Page>

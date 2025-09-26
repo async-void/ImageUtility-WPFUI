@@ -13,15 +13,14 @@
 
     <Grid VerticalAlignment="Top"
           HorizontalAlignment="Left"
-          Margin="20, 0">
+          Margin="20, 0"
+          Width="800">
 
         <StackPanel Orientation="Vertical">
             
             <!--#region DIRECTORY-->
             <Border Style="{StaticResource HoverableBorderStyle}"
-                    Width="600"
-                    Height="140"
-                    Margin="2">
+                    Padding="4">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="6"
                              ShadowDepth="2"
@@ -29,14 +28,93 @@
                              Color="Black"
                              Opacity=".3" />
                 </Border.Effect>
+                <StackPanel>
+                    <ui:Card 
+                             Margin="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <ui:TextBlock Text="Source Dir:"
+                                          FontStyle="Italic"
+                                          VerticalAlignment="Center"
+                                          Padding="6"/>
+                            <StackPanel Grid.Column="2"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <ui:TextBox Width="400"
+                                            Height="32"
+                                            Text="{Binding SourceDir}" />
+                                <ui:Button Width="44"
+                                           Margin="4,0,0,0"
+                                           Padding="0"
+                                           Background="{x:Null}"
+                                           BorderBrush="Transparent"
+                                           Command="{Binding ViewModel.SelectDirCommand, Mode=OneWay}"
+                                           CommandParameter="source_dir"
+                                           Cursor="Hand">
+                                    <ui:Button.Content>
+                                        <ui:SymbolIcon Filled="True"
+                                                       FontSize="28"
+                                                       Foreground="{DynamicResource BlueGradientBrush}"
+                                                       Symbol="FolderOpen24" />
+                                    </ui:Button.Content>
+                                </ui:Button>
+                            </StackPanel>
+
+
+                        </Grid>
+                    </ui:Card>
+                    <ui:Card >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <ui:TextBlock Text="Destination Dir:"
+                                          FontStyle="Italic"
+                                          VerticalAlignment="Center"
+                                          Padding="6"/>
+                            <StackPanel Grid.Column="2"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <ui:TextBox Width="400"
+                                            Height="32"
+                                            Text="{Binding DestinationDir}" />
+                                <ui:Button Width="44"
+
+                                           Margin="4,0,0,0"
+                                           Padding="0"
+                                           Background="{x:Null}"
+                                           BorderBrush="Transparent"
+                                           Command="{Binding ViewModel.SelectDirCommand, Mode=OneWay}"
+                                           CommandParameter="source_dir"
+                                           Cursor="Hand">
+                                    <ui:Button.Content>
+                                        <ui:SymbolIcon Filled="True"
+                                                       FontSize="28"
+                                                       Foreground="{DynamicResource BlueGradientBrush}"
+                                                       Symbol="FolderOpen24" />
+                                    </ui:Button.Content>
+                                </ui:Button>
+                            </StackPanel>
+                           
+
+                        </Grid>
+                    </ui:Card>
+                </StackPanel>
+                
+
             </Border>
             <!--#endregion-->
             
             <!--#region  SIZEING-->
             <Border Style="{StaticResource HoverableBorderStyle}"
-                    Width="600"
                     Height="Auto"
-                    Margin="4">
+                    Margin="0 6">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="6"
                                         ShadowDepth="2"
@@ -47,9 +125,8 @@
                 <!--#region  HEIGHT-->
                 <StackPanel VerticalAlignment="Center"
                             Margin="2, 4">
-                    <ui:Card Margin="2"
-                             Padding="10">
-                        <Grid  >
+                    <ui:Card>
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition />
@@ -71,8 +148,7 @@
                     <!--#endregion-->
                     
                     <!--#region WIDTH-->
-                    <ui:Card Margin="2"
-                             Padding="10">
+                    <ui:Card>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -92,9 +168,7 @@
                     <!--#endregion-->
                     
                     <!--#region  RATIO-->
-                    <ui:Card Margin="2"
-
-                             Padding="10">
+                    <ui:Card>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -119,24 +193,27 @@
             
             <!--#region  COMMANDS-->
             <Border Style="{StaticResource HoverableBorderStyle}"
-                    Width="600"
-                    Height="80"
-                    Margin="2">
+                    Height="Auto"
+                    Margin="0">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="6"
-                  ShadowDepth="2"
-                  Direction="270"
-                  Color="Black"
-                  Opacity=".3" />
+                                      ShadowDepth="2"
+                                      Direction="270"
+                                      Color="Black"
+                                      Opacity=".3" />
                 </Border.Effect>
 
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
-                            Margin="10 0">
-                    <ui:Button Content="CANCEL" Margin="6 0" Width="100" 
-                               Background="{StaticResource DangerGradientBrush}"/>
-                    <ui:Button Content="APPLY" Width="100"
-                               Background="{StaticResource SuccessGradientBrush}"/>
+                            Margin="8 ">
+                    <ui:Button Content="{ui:SymbolIcon Symbol=Delete24, Filled=True, FontSize=36}" 
+                               Style="{StaticResource DangerButtonSyle}"
+                               Width="60"
+                               Height="50"
+                               Margin="10 0">
+                    </ui:Button>
+                    <ui:Button Content="APPLY" Width="100" Height="50"
+                               Background="{DynamicResource SuccessGradientBrush}"/>
                 </StackPanel>
             </Border>
             <!--#endregion-->
