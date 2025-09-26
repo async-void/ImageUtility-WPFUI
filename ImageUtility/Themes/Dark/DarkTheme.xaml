@@ -5,16 +5,19 @@
 
     <!--  COLORS  -->
 
+    <Color x:Key="AlmostBlack">#0c0c0c</Color>
     <Color x:Key="PrimaryGray">#1E1E1E</Color>
     <Color x:Key="SecondaryGray">#2d2d2d</Color>
     <Color x:Key="AccentGray">#3e3e3e</Color>
     <Color x:Key="LightGray">#E1E1E1</Color>
     <Color x:Key="PrimaryBlue">#2A82DA</Color>
     <Color x:Key="LightBlue">#3B99FF</Color>
-    <Color x:Key="PrimaryRed">#d31e02</Color>
-    <Color x:Key="LightRed">#d14732</Color>
+    <Color x:Key="PrimaryRed">#fc021f</Color>
+    <Color x:Key="LightRed">#fc373e</Color>
     <Color x:Key="PrimaryGreen">#0a9e03</Color>
     <Color x:Key="LightGreen">#61ba5d</Color>
+    <Color x:Key="PrimaryOrange">#c46703</Color>
+    <Color x:Key="LightOrange">#c67925</Color>
 
     <!--  BRUSHES  -->
 
@@ -26,10 +29,12 @@
     <SolidColorBrush x:Key="LightRedBrush" Color="{StaticResource LightRed}" />
     <SolidColorBrush x:Key="PrimaryGreenBrush" Color="{StaticResource PrimaryGreen}" />
     <SolidColorBrush x:Key="LightGreenBrush" Color="{StaticResource LightGreen}" />
+    <SolidColorBrush x:Key="PrimaryOrangeBrush" Color="{StaticResource PrimaryOrange}" />
+    <SolidColorBrush x:Key="LightOrangeBrush" Color="{StaticResource LightOrange}" />
 
     <!--  GRADIENTS  -->
 
-    <LinearGradientBrush x:Key="TitlePrimaryGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+    <LinearGradientBrush x:Key="PrimaryDarkGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0.0" Color="{StaticResource SecondaryGray}" />
         <GradientStop Offset="1.0" Color="{StaticResource PrimaryGray}" />
     </LinearGradientBrush>
@@ -42,6 +47,11 @@
     <LinearGradientBrush x:Key="DangerGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0.0" Color="{StaticResource LightRed}" />
         <GradientStop Offset="1.0" Color="{StaticResource PrimaryRed}" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WarningGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.0" Color="{StaticResource LightOrange}" />
+        <GradientStop Offset="1.0" Color="{StaticResource PrimaryOrange}" />
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="SuccessGradientBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">

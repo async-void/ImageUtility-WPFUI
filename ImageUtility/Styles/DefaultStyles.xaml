@@ -3,39 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
-
-    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="DangerButtonSyle">
-        <Setter Property="Background" Value="{DynamicResource DangerGradientBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-        <Setter Property="Padding" Value="10,4" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="border"
-                        Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="6">
-                        <ContentPresenter
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         RecognizesAccessKey="True" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.5" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style x:Key="HoverableBorderStyle" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource ControlFillColorSecondaryBrush}" />
         <Setter Property="CornerRadius" Value="4" />
@@ -48,18 +15,17 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="ToolTip" x:Key="ToolTipStyle">
+    <Style x:Key="ToolTipStyle" TargetType="ToolTip">
         <Setter Property="Background" Value="{DynamicResource SuccessGradientBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
-        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        <Setter Property="Padding" Value="8" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="{DynamicResource SuccessGradientBrush}"
-                            CornerRadius="6">
+                    <Border Background="{DynamicResource SuccessGradientBrush}" CornerRadius="6">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
-                   
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
